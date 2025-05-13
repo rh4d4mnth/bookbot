@@ -5,9 +5,14 @@ def get_book_text(path_to_file):
     return file_contents
 
 # counts the number of words in a string
-def get_word_count(path_to_file):
+def get_word_count_format(path_to_file):
     num_words = len(get_book_text(path_to_file).split())
     return f"{num_words} words found in the document"
+
+# counts the number of words in a string and returns only the number
+def get_word_count(path_to_file):
+    num_words = len(get_book_text(path_to_file).split())
+    return num_words
 
 # counts the number of each characters in a string
 def get_num_char(path_to_file):
@@ -20,4 +25,15 @@ def get_num_char(path_to_file):
         else:
             file_dictionary[i] = 1
     return file_dictionary
+
+# sorts dictionary by value
+def sort_on(dict):
+    return dict["num"]
+
+def get_sorted_dicts(file_dictionary):
+    sorted_dicts = []
+    for i in file_dictionary:
+        sorted_dicts.append({"char": i, "num": file_dictionary[i]})
+    sorted_dicts.sort(reverse=True, key=sort_on)
+    return sorted_dicts
 
